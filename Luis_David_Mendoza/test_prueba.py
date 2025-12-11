@@ -7,9 +7,21 @@ def test_instancias_compania():
     b1 = Bailarin("Lucia", "Contemporaneo")
     b2 = Bailarin("Omar", "Hip Hop")
     compania = Compania("Danza Viva", "Madrid")
+
+    assert len(compania.bailarines) == 0
     
     compania.agregar_bailarin(b1)
     compania.agregar_bailarin(b2)
+
+    assert len(compania.bailarines) == 2
+
+    # Verificar bailarin 1 (indice 0)
+    assert compania.bailarines[0].nombre == "Lucia"
+    assert compania.bailarines[0].especialidad == "Contemporaneo"
+    
+    # Verificar bailarin 2 (indice 1)
+    assert compania.bailarines[1].nombre == "Omar"
+    assert compania.bailarines[1].especialidad == "Hip Hop"
     
     assert all(isinstance(b, Bailarin) for b in compania.bailarines)
     assert isinstance(compania, Compania)
@@ -25,7 +37,7 @@ def test_atributos_compania():
     compania = Compania("Ballet Clasico", "Lima")
     assert compania.nombre == "Ballet Clasico"
     assert compania.ciudad == "Lima"
-    assert len(compania.bailarines) == 0 
+
 
 
 ######################################################33
